@@ -1,6 +1,5 @@
 import { BaseEntity } from 'src/base/base.entity';
-import { TableEntity } from 'src/modules/qrcode/entities/table.entity';
-import { Column, CreateDateColumn, Entity, OneToMany } from 'typeorm';
+import { Column, CreateDateColumn, Entity } from 'typeorm';
 
 @Entity()
 export class BranchEntity extends BaseEntity {
@@ -27,7 +26,4 @@ export class BranchEntity extends BaseEntity {
 
   @Column()
   locationUrl: string;
-
-  @OneToMany(() => TableEntity, (table) => table.branch, { cascade: true })
-  tables: TableEntity[];
 }
