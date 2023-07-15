@@ -20,13 +20,13 @@ import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('list')
+  @Get('/list')
   @ApiOperation({ summary: 'Получить список пользователей' })
   async lisOfUsers(@Query() listParamsDto: ListParamsDto) {
     return await this.userService.listOfUsers(listParamsDto);
   }
 
-  @Delete(':id')
+  @Delete('/:id')
   @ApiOperation({ summary: 'Удалить пользователя по его ID' })
   async removeUser(@Param('id') user_id: number) {
     return await this.userService.deleteUser(user_id);
@@ -41,7 +41,7 @@ export class UserController {
     return this.userService.getProfile(req?.user?.id);
   }
 
-  @Patch('update/profile')
+  @Patch('/update/profile')
   @ApiOperation({ summary: 'Изменение данных в профиле' })
   async updateProfile(@Req() req: any, @Body() udpateDto: UpdateUserDto) {
     return await this.userService.updateUsersProfile(req.user?.id, udpateDto);
