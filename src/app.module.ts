@@ -32,9 +32,9 @@ import { QrcodeModule } from './modules/qrcode/qrcode.module';
         synchronize: true,
         extra: {
           ssl: {
-              rejectUnauthorized: false
-          }
-      },
+            rejectUnauthorized: false,
+          },
+        },
       }),
       inject: [ConfigService],
     }),
