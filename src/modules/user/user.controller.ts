@@ -19,11 +19,11 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get('/list')
-  @ApiOperation({ summary: 'Получить список пользователей' })
-  async lisOfUsers(@Query() listParamsDto: ListParamsDto) {
-    return await this.userService.listOfUsers(listParamsDto);
-  }
+  // @Get('/list')
+  // @ApiOperation({ summary: 'Получить список пользователей' })
+  // async lisOfUsers(@Query() listParamsDto: ListParamsDto) {
+  //   return await this.userService.listOfUsers(listParamsDto);
+  // }
 
   @Delete('/:id')
   @ApiOperation({ summary: 'Удалить пользователя по его ID' })
@@ -31,12 +31,12 @@ export class UserController {
     return await this.userService.deleteUser(user_id);
   }
 
-  @Get('/profile')
-  @ApiOperation({ summary: 'Получение профиля пользователя' })
-  async getProfile(@Req() req) {
-    console.log(req.user);
-    return this.userService.getProfile(req?.user?.id);
-  }
+  // @Get('/profile')
+  // @ApiOperation({ summary: 'Получение профиля пользователя' })
+  // async getProfile(@Req() req) {
+  //   console.log(req.user);
+  //   return this.userService.getProfile(req?.user?.id);
+  // }
 
   @Patch('/update/profile')
   @ApiOperation({ summary: 'Изменение данных в профиле' })
