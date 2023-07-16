@@ -12,6 +12,7 @@ import { ConfigService } from '@nestjs/config';
 import { ConfirmCode } from './entities/auth.entity';
 import { JwtPayload } from 'jsonwebtoken';
 import { SmsNikitaService } from 'src/services/sms-nikita.ts/sms-nikita.service';
+// import { LoginDto } from './dto/login.dto';
 import { ConfrimCodeDto } from './dto/confrim-code.dto';
 import { CreateUserDto } from '../user/dto/create-user.dto';
 import { ConfirmAccountDto } from './dto/confirm-account.dto';
@@ -123,43 +124,6 @@ export class AuthService {
       access_token,
     };
   }
-
-  // async confirm(confirmAccountDto: ConfirmAccountDto) {
-  //   const { code, phoneNumber } = confirmAccountDto;
-
-  //   const sentAccount = await this.confirmCodesRepository.findOne({
-  //     where: {
-  //       phoneNumber,
-  //     },
-  //   });
-
-  //   if (!sentAccount || code !== sentAccount.code) {
-  //     throw new BadRequestException('Incorrect credentials');
-  //   }
-
-  //   const currentTime = Date.now();
-  //   const createdAt = sentAccount.createdAt.getTime();
-  //   const timeDifference = (currentTime - createdAt) / (1000 * 60); // Разница в минутах
-  //   const tenMinutes = 10;
-  //   if (timeDifference > tenMinutes) {
-  //     await this.confirmCodesRepository.remove(sentAccount);
-  //     throw new BadRequestException(
-  //       'Code has expired. Please send a new code within 10 minutes.',
-  //     );
-  //   }
-
-  //   const account = await this.userService.findOne(phoneNumber);
-
-  //   await this.confirmCodesRepository.remove(sentAccount);
-  //   await this.userService.activateUser(account.id);
-
-  //   const payload = this.createPayload(account);
-  //   const access_token = this.jwtService.sign(payload);
-
-  //   return {
-  //     access_token,
-  //   };
-  // }
 
   private async sendConfirmationCode(phoneNumber: string): Promise<any> {
     //тут был void

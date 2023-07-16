@@ -5,7 +5,6 @@ import { ImageModule } from './modules/image/image.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { BranchModule } from './modules/branch/branch.module';
 import { UserModule } from './modules/user/user.module';
-import { QrcodeModule } from './modules/qrcode/qrcode.module';
 
 @Module({
   imports: [
@@ -32,14 +31,13 @@ import { QrcodeModule } from './modules/qrcode/qrcode.module';
         synchronize: true,
         extra: {
           ssl: {
-            rejectUnauthorized: false,
-          },
-        },
+              rejectUnauthorized: false
+          }
+      },
       }),
       inject: [ConfigService],
     }),
     BranchModule,
-    QrcodeModule,
   ],
   controllers: [],
 })
