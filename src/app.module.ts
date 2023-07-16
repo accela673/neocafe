@@ -31,9 +31,9 @@ import { UserModule } from './modules/user/user.module';
         synchronize: true,
         extra: {
           ssl: {
-              rejectUnauthorized: false
-          }
-      },
+            rejectUnauthorized: false,
+          },
+        },
       }),
       inject: [ConfigService],
     }),

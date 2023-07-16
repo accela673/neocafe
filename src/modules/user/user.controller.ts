@@ -13,6 +13,7 @@ import { UserService } from './user.service';
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ListParamsDto } from 'src/base/dto/list-params.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 @ApiTags('Пользователи')
 @Controller('user')
@@ -31,7 +32,9 @@ export class UserController {
     return await this.userService.deleteUser(user_id);
   }
 
-  @Get('/profile')
+  @Get('profile')
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Получение профиля пользователя' })
   async getProfile(@Req() req) {
     console.log(req.user);
