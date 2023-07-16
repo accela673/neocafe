@@ -24,18 +24,18 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @ApiOperation({ summary: 'Регистрация пользователя' })
-  @Post('signup')
+  @Post('/signup')
   async signup(@Body() createUserDto: CreateUserDto) {
     return this.authService.signup(createUserDto);
   }
 
-  @Post('confirm')
+  @Post('/confirm')
   @ApiOperation({ summary: 'Активировать аккаунт' })
   async confirm(@Body() confirmAccountDto: ConfirmAccountDto) {
     return this.authService.confirm(confirmAccountDto);
   }
 
-  @Post('login/send-verification-code')
+  @Post('/login/send-verification-code')
   @ApiOperation({ summary: 'Отправить код на номер телефона' })
   @ApiBody({
     schema: {
@@ -53,7 +53,7 @@ export class AuthController {
     await this.authService.sendVerifyCode(phoneNumber);
   }
 
-  @Post('login/verify')
+  @Post('/login/verify')
   @ApiOperation({ summary: 'Подтвердить код отправленный на номер телефона' })
   @ApiBody({
     schema: {
