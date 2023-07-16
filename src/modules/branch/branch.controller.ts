@@ -8,17 +8,17 @@ import { CreateBranchDto } from './dto/create-branch.dto';
 export class BranchController {
   constructor(private readonly branchService: BranchService) {}
 
-  // @ApiOperation({ summary: 'Вывести все филиалы' })
-  // @Get()
-  // async getAllBranches() {
-  //   return await this.branchService.getAll();
-  // }
+  @ApiOperation({ summary: 'Вывести все филиалы' })
+  @Get()
+  async getAllBranches() {
+    return await this.branchService.getAll();
+  }
 
-  // @ApiOperation({ summary: 'Вывести один филиал' })
-  // @Get('/:id')
-  // async getOneBranch(@Param('id') id: number) {
-  //   return await this.branchService.get(id);
-  // }
+  @ApiOperation({ summary: 'Вывести один филиал' })
+  @Get('/:id')
+  async getOneBranch(@Param('id') id: number) {
+    return await this.branchService.get(id);
+  }
 
   @ApiOperation({ summary: 'Создать один филиал' })
   @Post()
